@@ -91,6 +91,8 @@ body.modal-open .cta-button {
   font-family: "Epilogue", sans-serif;
   font-weight: 600;
   letter-spacing: 0.04em;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo-text {
