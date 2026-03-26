@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MKO Cafe</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pure-black: #050505;
+      --deep-espresso: rgba(24, 14, 8, 0.85);
+      --amber-foam: #e0a96d;
+      --rose-fog: rgba(255, 240, 230, 0.75);
+      --mint-hint: rgba(169, 208, 142, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: #f8f6f1;
+      background: var(--pure-black);
+      min-height: 100vh;
+      background-image: linear-gradient(115deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.3)),
+        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4vw;
+    }
+
+    main {
+      width: min(1200px, 100%);
+      background: var(--deep-espresso);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 32px;
+      padding: clamp(2rem, 4vw, 3rem);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.4rem;
+      text-transform: uppercase;
+      color: var(--amber-foam);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      letter-spacing: 0.05em;
+      line-height: 1.15;
+    }
+
+    .intro {
+      max-width: 580px;
+      color: var(--rose-fog);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #1a120a;
+      background: var(--amber-foam);
+      transition: transform 200ms ease, border-color 200ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--rose-fog);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .signature {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .signature h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    }
+
+    .signature p {
+      max-width: 520px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.35;
+      font-size: 0.9rem;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .recipe-card {
+      background: rgba(5, 5, 5, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 1.1rem 1.2rem;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      transition: border-color 200ms ease, transform 200ms ease;
+    }
+
+    .recipe-card:hover {
+      border-color: rgba(224, 169, 109, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .recipe-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .summary-text {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .summary-text .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+    }
+
+    .summary-text .subtitle {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .recipe-price {
+      font-weight: 600;
+      color: var(--amber-foam);
+      letter-spacing: 0.08em;
+    }
+
+    .recipe-card p {
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+
+    .preorder {
+      margin: 2.5rem 0;
+      padding: clamp(1.5rem, 3vw, 2.3rem);
+      border-radius: 26px;
+      background: rgba(5, 5, 5, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .preorder h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+    }
+
+    .preorder p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+      max-width: 720px;
+    }
+
+    .preorder-form {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .preorder-form fieldset {
+      border: none;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .preorder-form legend {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose-fog);
+    }
+
+    .preorder-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .option-card {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      gap: 0.75rem;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.25);
+      transition: border-color 200ms ease, transform 200ms ease;
+    }
+
+    .option-card:hover {
+      border-color: rgba(224, 169, 109, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .option-card:has(input:checked) {
+      border-color: rgba(224, 169, 109, 0.5);
+      background: rgba(224, 169, 109, 0.08);
+    }
+
+    .option-card input {
+      accent-color: var(--amber-foam);
+      width: 1rem;
+      height: 1rem;
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    .option-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .option-copy strong {
+      font-size: 1rem;
+    }
+
+    .option-copy small {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .option-card input:checked ~ .option-copy strong {
+      color: var(--amber-foam);
+    }
+
+    .preorder-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .preorder-apply {
+      border: none;
+      border-radius: 999px;
+      padding: 0.75rem 1.6rem;
+      background: var(--amber-foam);
+      color: #1a120a;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 200ms ease;
+    }
+
+    .preorder-apply:hover {
+      transform: translateY(-2px);
+    }
+
+    .preorder-hint {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .selection-preview {
+      margin-bottom: 1rem;
+      padding: 1rem 1.25rem;
+      border-radius: 18px;
+      background: rgba(5, 5, 5, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .preview-label {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose-fog);
+    }
+
+    .preview-empty {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .preview-list {
+      list-style: none;
+      display: none;
+      gap: 0.4rem;
+      flex-direction: column;
+      padding-left: 0;
+    }
+
+    .preview-list--visible {
+      display: flex;
+    }
+
+    .preview-list li {
+      padding: 0.45rem 0.75rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reservation {
+      margin-top: 3rem;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      border-radius: 24px;
+      background: rgba(5, 5, 5, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .reservation h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .reservation p {
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    .reservation form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .reservation label {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose-fog);
+      margin-bottom: 0.35rem;
+      display: inline-block;
+    }
+
+    .reservation input,
+    .reservation select,
+    .reservation textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(5, 5, 5, 0.55);
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    .reservation textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .reservation button {
+      justify-self: start;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--amber-foam);
+      color: #1a120a;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 250ms ease;
+    }
+
+    .reservation button:hover {
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+      align-items: center;
+    }
+
+
+    @media (max-width: 640px) {
+      main {
+        padding: 1.75rem;
+      }
+
+      header {
+        text-align: center;
+        align-items: center;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="eyebrow">MKO CAFE</span>
+      <h1>Kahvenin ritmini MKO'nun kalbinde hissedin.</h1>
+      <p class="intro">Gündüzleri sakin bir çalışma adresi, akşamları zarif sohbetlerin buluşması. MKO, taze çekirdekleri, özenli sunumları ve sıcak misafirperverliğiyle her yudumda başka bir hikâye anlatıyor.</p>
+      <div class="hero-actions">
+        <a class="btn btn--ghost" href="menu.html">Hakkımızda</a>
+      </div>
+    </header>
+
+    <section class="signature">
+      <div>
+        <div class="pill">özel reçeteler</div>
+        <h2>Sadece MKO'da tadabileceğin yiyecek & içecekler</h2>
+        <p>Barista ve mutfak ekibimiz aynı tezgahta çalışıyor. Bu yüzden fincandan tabağa kadar uzanan menüde aromalar birbirine dokunuyor. Aşağıdan hikayeleri açıp her reçetenin detayını keşfedebilirsin.</p>
+      </div>
+
+      <div class="recipe-grid">
+        <article class="recipe-card">
+          <div class="recipe-header">
+            <div class="summary-text">
+              <span class="title">Safranlı Honey Latte</span>
+              <span class="subtitle">safran • çiçek balı • espresso</span>
+            </div>
+            <span class="recipe-price">175₺</span>
+          </div>
+          <p>Isınan safran iplikleri çiçek balıyla infüze edilip tuzlu karamelle dengeleniyor, üzerine ev yapımı badem sütü mikro köpükle kapanıyor.</p>
+        </article>
+
+        <article class="recipe-card">
+          <div class="recipe-header">
+            <div class="summary-text">
+              <span class="title">Kakuleli Soğuk Brew Tonic</span>
+              <span class="subtitle">kakule • bergamot tonic • cold brew</span>
+            </div>
+            <span class="recipe-price">165₺</span>
+          </div>
+          <p>48 saatlik soğuk demleme kakule kabuklarıyla dinleniyor, servis öncesi bergamot tonikle birleşip misket limonu kabuğuyla tazeleniyor.</p>
+        </article>
+
+        <article class="recipe-card">
+          <div class="recipe-header">
+            <div class="summary-text">
+              <span class="title">Trüflü Burrata Tost</span>
+              <span class="subtitle">ekşi maya • burrata • trüf tuzu</span>
+            </div>
+            <span class="recipe-price">210₺</span>
+          </div>
+          <p>Odun fırınından çıkan ekşi mayaya burrata yerleşiyor; üzeri trüf tuzu, kavrulmuş domates ve fesleğen yağ karışımıyla tamamlanıyor.</p>
+        </article>
+
+        <article class="recipe-card">
+          <div class="recipe-header">
+            <div class="summary-text">
+              <span class="title">İncirli Karamel Cheesecake</span>
+              <span class="subtitle">organik labne • incir kompostosu</span>
+            </div>
+            <span class="recipe-price">145₺</span>
+          </div>
+          <p>Tam buğday taban üzerine labneli cheesecake, üstüne soğuk infüze incir kompostosu ve kavrulmuş badem kırıkları.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="preorder">
+      <div>
+        <div class="pill">ön sipariş</div>
+        <h2>Masada hazır olmasını istediğin tatları işaretle</h2>
+        <p>Rezervasyon öncesi içecek, ara sıcak ve tatlı tercihlerini seç; "Seçimleri göster" butonuna bastığında tercihlerin alttaki rezervasyon bölümünde listelenir.</p>
+      </div>
+
+      <form class="preorder-form">
+        <fieldset>
+          <legend>İçecekler</legend>
+          <div class="preorder-grid">
+            <label class="option-card">
+              <input type="checkbox" value="Safranlı Honey Latte">
+              <div class="option-copy">
+                <strong>Safranlı Honey Latte</strong>
+                <small>Safran + çiçek balı</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Kakuleli Soğuk Brew Tonic">
+              <div class="option-copy">
+                <strong>Kakuleli Soğuk Brew Tonic</strong>
+                <small>Kakule + bergamot tonik</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Yuzu Espresso Tonic">
+              <div class="option-copy">
+                <strong>Yuzu Espresso Tonic</strong>
+                <small>Narenciye kabukları</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Lavantalı Cold Brew">
+              <div class="option-copy">
+                <strong>Lavantalı Cold Brew</strong>
+                <small>Çiçeksi buz demleme</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="MKO Rafine Espresso">
+              <div class="option-copy">
+                <strong>MKO Rafine Espresso</strong>
+                <small>Darjeeling aromalı</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Hibiskus Fizz Tonic">
+              <div class="option-copy">
+                <strong>Hibiskus Fizz Tonic</strong>
+                <small>Hibiskus + biberiye köpüğü</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Bademli Iced Cortado">
+              <div class="option-copy">
+                <strong>Bademli Iced Cortado</strong>
+                <small>Soğuk badem sütü</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Tahinli Mocha">
+              <div class="option-copy">
+                <strong>Tahinli Mocha</strong>
+                <small>Susam kreması + espresso</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Nane Limon Kombucha">
+              <div class="option-copy">
+                <strong>Nane Limon Kombucha</strong>
+                <small>Cold brew ilaveli</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Karamelli Nitro Brew">
+              <div class="option-copy">
+                <strong>Karamelli Nitro Brew</strong>
+                <small>Vegan karamelli krema</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Satsuma Iced Tea">
+              <div class="option-copy">
+                <strong>Satsuma Iced Tea</strong>
+                <small>Satsuma kabuk + beyaz çay</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Çikolatalı Affogato">
+              <div class="option-copy">
+                <strong>Çikolatalı Affogato</strong>
+                <small>Espresso + kakao sorbe</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Hindistan Cevizli Latte">
+              <div class="option-copy">
+                <strong>Hindistan Cevizli Latte</strong>
+                <small>Kavrulmuş hindistan cevizi</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Zencefilli Latte Tonic">
+              <div class="option-copy">
+                <strong>Zencefilli Latte Tonic</strong>
+                <small>Taze zencefil + tonik</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Assam Masala Chai">
+              <div class="option-copy">
+                <strong>Assam Masala Chai</strong>
+                <small>Sütlü baharatlı çay</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Keten Tohumlu Smooth Brew">
+              <div class="option-copy">
+                <strong>Keten Tohumlu Smooth Brew</strong>
+                <small>Soğuk kahve + chia köpük</small>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Ara sıcaklar & yemekler</legend>
+          <div class="preorder-grid">
+            <label class="option-card">
+              <input type="checkbox" value="Trüflü Burrata Tost">
+              <div class="option-copy">
+                <strong>Trüflü Burrata Tost</strong>
+                <small>Ekşi maya + trüf tuzu</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Mahlepli Simit & Labne">
+              <div class="option-copy">
+                <strong>Mahlepli Simit & Labne</strong>
+                <small>Rezeneli turşu eşliğinde</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Zahterli Peynir Tabağı">
+              <div class="option-copy">
+                <strong>Zahterli Peynir Tabağı</strong>
+                <small>Yerel üreticiden seçki</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Fırınlanmış Enginar Kalbi">
+              <div class="option-copy">
+                <strong>Fırınlanmış Enginar Kalbi</strong>
+                <small>Limon kabuğu gremolata</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Yaban Mersinli Peynirli Börek">
+              <div class="option-copy">
+                <strong>Yaban Mersinli Peynirli Börek</strong>
+                <small>Mascarpone dolgulu</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Adaçaylı Gnocchi">
+              <div class="option-copy">
+                <strong>Adaçaylı Gnocchi</strong>
+                <small>Tereyağlı adaçayı sos</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Izgara Halloumi Panzanella">
+              <div class="option-copy">
+                <strong>Izgara Halloumi Panzanella</strong>
+                <small>Domates & ekşi maya</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Kabak Çekirdekli Bruschetta">
+              <div class="option-copy">
+                <strong>Kabak Çekirdekli Bruschetta</strong>
+                <small>Fırın kabak + ricotta</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Baharatlı Karnabahar Taco">
+              <div class="option-copy">
+                <strong>Baharatlı Karnabahar Taco</strong>
+                <small>Sumaklı yoğurt sos</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Izgara Somon Bao">
+              <div class="option-copy">
+                <strong>Izgara Somon Bao</strong>
+                <small>Miso glazeli</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Fermente Kinoa Salatası">
+              <div class="option-copy">
+                <strong>Fermente Kinoa Salatası</strong>
+                <small>Narlı mikro yeşiller</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Köz Patlıcanlı Mini Taco">
+              <div class="option-copy">
+                <strong>Köz Patlıcanlı Mini Taco</strong>
+                <small>Tahinli yoğurt</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Çifte Peynirli Focaccia">
+              <div class="option-copy">
+                <strong>Çifte Peynirli Focaccia</strong>
+                <small>Ezine + burrata</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Kuzu İncik Slider">
+              <div class="option-copy">
+                <strong>Kuzu İncik Slider</strong>
+                <small>Balzamik glaze</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Mantarlı Risotto Cups">
+              <div class="option-copy">
+                <strong>Mantarlı Risotto Cups</strong>
+                <small>Trüf yağı dokunuşu</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Girit Usulü Kabak Çiçeği Sarma">
+              <div class="option-copy">
+                <strong>Girit Usulü Kabak Çiçeği Sarma</strong>
+                <small>Limonlu zeytinyağlı</small>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tatlılar</legend>
+          <div class="preorder-grid">
+            <label class="option-card">
+              <input type="checkbox" value="İncirli Karamel Cheesecake">
+              <div class="option-copy">
+                <strong>İncirli Karamel Cheesecake</strong>
+                <small>Organik labne + incir sosu</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Fıstıklı Paris-Brest">
+              <div class="option-copy">
+                <strong>Fıstıklı Paris-Brest</strong>
+                <small>Pistachio kreması</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Lavantalı Çikolata Kap">
+              <div class="option-copy">
+                <strong>Lavantalı Çikolata Kap</strong>
+                <small>Lavanta kreması + bitter</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Portakal Çiçekli Profiterol">
+              <div class="option-copy">
+                <strong>Portakal Çiçekli Profiterol</strong>
+                <small>Beyaz çikolata glazür</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Karamelize Muzlu Tart">
+              <div class="option-copy">
+                <strong>Karamelize Muzlu Tart</strong>
+                <small>Tahilli taban</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Tahinli Blondie">
+              <div class="option-copy">
+                <strong>Tahinli Blondie</strong>
+                <small>Kavrulmuş susam krokan</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Matcha Mille Crepe">
+              <div class="option-copy">
+                <strong>Matcha Mille Crepe</strong>
+                <small>Kat kat matcha kreması</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Kestanelli Tiramisu">
+              <div class="option-copy">
+                <strong>Kestanelli Tiramisu</strong>
+                <small>Espresso ile ıslatılmış</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Baklava Lokması">
+              <div class="option-copy">
+                <strong>Baklava Lokması</strong>
+                <small>Antep fıstığı dolgulu</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Çilekli Pavlova">
+              <div class="option-copy">
+                <strong>Çilekli Pavlova</strong>
+                <small>Portakal çiçeği kreması</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Üçlü Çikolata Mousse">
+              <div class="option-copy">
+                <strong>Üçlü Çikolata Mousse</strong>
+                <small>Sütlü, bitter, ruby</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Earl Grey Panna Cotta">
+              <div class="option-copy">
+                <strong>Earl Grey Panna Cotta</strong>
+                <small>Bergamot sos</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Balkabaklı Crumble">
+              <div class="option-copy">
+                <strong>Balkabaklı Crumble</strong>
+                <small>Fındıklı streusel</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Tuzlu Karamelli Brownie">
+              <div class="option-copy">
+                <strong>Tuzlu Karamelli Brownie</strong>
+                <small>Deniz tuzu kristalli</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Vişneli Peynir Mousse">
+              <div class="option-copy">
+                <strong>Vişneli Peynir Mousse</strong>
+                <small>Reçel dolgulu</small>
+              </div>
+            </label>
+
+            <label class="option-card">
+              <input type="checkbox" value="Antep Fıstıklı Dondurmalı Kat">
+              <div class="option-copy">
+                <strong>Antep Fıstıklı Dondurmalı Kat</strong>
+                <small>Kaymaklı dondurma + çıtır kataifi</small>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="preorder-actions">
+          <button type="button" class="preorder-apply">Seçimleri göster</button>
+          <span class="preorder-hint">Seçimleri rezervasyon formundaki listeye gönderir.</span>
+        </div>
+      </form>
+    </section>
+
+    <section id="rezervasyon" class="reservation">
+      <div>
+        <div class="pill">rezervasyon</div>
+        <h2>Masanda yer açalım</h2>
+        <p>Haftanın her günü 09.00-23.00 arası açığız. Çalışma, kutlama veya tadım seansı fark etmez; formu doldur, barista ekibi sana birkaç dakika içinde dönüş yapsın.</p>
+      </div>
+      <div class="selection-preview" aria-live="polite">
+        <span class="preview-label">Seçilen yiyecek ve içecekler</span>
+        <p class="preview-empty">Henüz seçim yapılmadı.</p>
+        <ul class="preview-list"></ul>
+      </div>
+      <form>
+        <div>
+          <label for="guest-name">Ad soyad</label>
+          <input id="guest-name" name="name" type="text" placeholder="Merve Kaya" required>
+        </div>
+        <div>
+          <label for="guest-mail">E-posta</label>
+          <input id="guest-mail" name="email" type="email" placeholder="merve@example.com" required>
+        </div>
+        <div>
+          <label for="guest-phone">Telefon</label>
+          <input id="guest-phone" name="phone" type="tel" placeholder="05XX XXX XX XX" pattern="[0-9 +]{10,15}" required>
+        </div>
+        <div>
+          <label for="guest-count">Kişi sayısı</label>
+          <input id="guest-count" name="size" type="number" min="1" max="20" placeholder="Örn. 4" required>
+        </div>
+        <div>
+          <label for="guest-date">Tarih</label>
+          <input id="guest-date" name="date" type="date" required>
+        </div>
+        <div>
+          <label for="guest-note">Not</label>
+          <textarea id="guest-note" name="note" placeholder="Kutlama, atölye veya özel isteklerin..."></textarea>
+        </div>
+        <button type="submit">Rezervasyon yap</button>
+      </form>
+    </section>
+
+    <footer>
+      <span>MKO Cafe • Kuloğlu Mh. İstanbul</span>
+    </footer>
+  </main>
+  <script>
+    // Ön sipariş seçimlerini rezervasyon önizlemesine aktarır
+    const preorderButton = document.querySelector('.preorder-apply');
+    const previewList = document.querySelector('.preview-list');
+    const previewEmpty = document.querySelector('.preview-empty');
+
+    preorderButton?.addEventListener('click', () => {
+      if (!previewList || !previewEmpty) {
+        return;
+      }
+      const selected = Array.from(document.querySelectorAll('.preorder-form input[type="checkbox"]:checked')).map((input) => input.value);
+
+      previewList.innerHTML = '';
+      if (!selected.length) {
+        previewEmpty.textContent = 'Henüz seçim yapılmadı.';
+        previewList.classList.remove('preview-list--visible');
+        return;
+      }
+
+      previewEmpty.textContent = 'Masaya hazırlanacak yiyecek ve içecekler:';
+      selected.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        previewList.appendChild(li);
+      });
+      previewList.classList.add('preview-list--visible');
+      document.getElementById('rezervasyon')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+</body>
+</html>

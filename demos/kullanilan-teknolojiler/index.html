@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teknolojiler Demo</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: "Segoe UI", sans-serif;
+        transition: background 0.25s ease, color 0.25s ease;
+      }
+      body.acik { background: #f4f7ff; color: #1e1f2d; }
+      body.koyu { background: #181a29; color: #f8f9ff; }
+      .panel {
+        width: min(460px, 90%);
+        background: rgba(255,255,255,0.9);
+        border-radius: 16px;
+        padding: 1.2rem;
+        border: 1px solid #d7defd;
+      }
+      body.koyu .panel {
+        background: rgba(29, 33, 52, 0.95);
+        border-color: #3d4262;
+      }
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 0.6rem 1rem;
+        background: #4a67ff;
+        color: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="acik">
+    <main class="panel">
+      <h2>HTML + CSS + JavaScript</h2>
+      <p>Butona basinca JavaScript body sinifini degistirir, CSS temayi aninda gunceller.</p>
+      <button id="tema">Temayi Degistir</button>
+    </main>
+    <script>
+      document.getElementById('tema').onclick = () => {
+        document.body.classList.toggle('koyu');
+        document.body.classList.toggle('acik');
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontendci • Instagram Bilgi Sayfası</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Epilogue:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-background" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="logo-group" aria-label="Frontendci">
+        <p class="logo-text">Frontendci</p>
+      </div>
+      <nav class="nav-links">
+        <a href="#vizyon">Amaç</a>
+        <a href="#icerik">İçerikler</a>
+        <a href="#projeler">Örnekler</a>
+      </nav>
+      <a
+        class="cta-button"
+        href="https://www.instagram.com/frontendci"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Instagram'a Git
+      </a>
+    </header>
+
+    <main>
+      <section class="hero-card" id="vizyon">
+        <p class="eyebrow">Amacimiz</p>
+        <h1>Frontendci, tasarimi ve kodu herkes icin anlasilir hale getirir.</h1>
+        <p class="lead">
+          Amacimiz, insanlara web site frontend'inin ne oldugunu ogretmek, bunu pratik
+          projelerle pekistirmek ve urettigimiz degerden gelir elde etmektir. Bilgiyi
+          uygulanabilir hale getirip, insanlarin kendi projelerini ayaga kaldirmasini
+          sagliyoruz.
+        </p>
+        <div class="metric-strip">
+          <article>
+            <span>Ogretim odagi</span>
+            <strong>Temelden ileriye</strong>
+          </article>
+          <article>
+            <span>Uygulama</span>
+            <strong>Gercek projeler</strong>
+          </article>
+          <article>
+            <span>Gelir modeli</span>
+            <strong>Egitim + mentorluk</strong>
+          </article>
+          <article>
+            <span>Destek</span>
+            <strong>Topluluk takibi</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="info-grid" id="icerik">
+        <article class="info-card highlight">
+          <div class="card-head">
+            <p class="eyebrow">1. Ana başlık</p>
+            <h2>Web Tasarım Nedir?</h2>
+          </div>
+          <p>
+            Web tasarım; bir sitenin görsel dili, içerik hiyerarşisi ve kullanıcıya sunduğu
+            deneyimin planlanmasıdır. İyi tasarım sadece "güzel görünmek" değil, doğru bilgiyi
+            doğru sırada ulaştırmaktır.
+          </p>
+          <button
+            class="site-trigger info-trigger"
+            data-title="Web Tasarım Nedir?"
+            data-description="Web tasarım; tipografi, renk, boşluk, hiyerarşi ve etkileşim kararlarının birleşimidir."
+            data-topics="Bilgi mimarisi: Kullanıcı neyi, hangi sırayla görmeli?|Görsel hiyerarşi: Başlık, alt başlık, CTA dengesi|Kullanıcı deneyimi: Hızlı anlaşılan, yönlendirici arayüz akışı"
+            data-code-key="web-tasarim"
+            data-demo="demos/web-tasarim/index.html"
+          >
+            Detayları gör
+          </button>
+        </article>
+
+        <article class="info-card stack">
+          <div class="card-head">
+            <p class="eyebrow">2. Ana başlık</p>
+            <h2>Kullanılan Teknolojiler</h2>
+          </div>
+          <p>
+            Frontend projelerinde en temel yapı HTML, CSS ve JavaScript'tir. Bunun üzerine
+            React/Vue gibi kütüphaneler, build araçları ve test sistemleri eklenir.
+          </p>
+          <div class="tag-rail">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>React</span>
+            <span>Git</span>
+          </div>
+          <button
+            class="site-trigger info-trigger"
+            data-title="Kullanılan Teknolojiler"
+            data-description="Modern frontend sürecinde kullanılan temel ve yardımcı teknolojilerin kısa özeti."
+            data-topics="HTML: Sayfanın iskeleti ve semantik etiketler|CSS: Düzen, renk, responsive davranışlar|JavaScript: Etkileşim, veri yönetimi, olay akışları"
+            data-code-key="teknolojiler"
+            data-demo="demos/kullanilan-teknolojiler/index.html"
+          >
+            Detayları gör
+          </button>
+        </article>
+
+        <article class="info-card" id="topluluk">
+          <div class="card-head">
+            <p class="eyebrow">3. Ana başlık</p>
+            <h2>Frontend Nasıl Çalışır?</h2>
+          </div>
+          <p>
+            Tarayıcı; HTML'i DOM'a çevirir, CSS ile stil hesaplar, JavaScript ile etkileşimleri
+            çalıştırır. Kullanıcı tıklayınca olay tetiklenir ve arayüz gerçek zamanlı güncellenir.
+          </p>
+          <div class="status-board">
+            <div>
+              <span>Adım 1</span>
+              <strong>HTML parse edilir</strong>
+            </div>
+            <div>
+              <span>Adım 2</span>
+              <strong>CSS uygulanır</strong>
+            </div>
+            <div>
+              <span>Adım 3</span>
+              <strong>JS olayları yönetir</strong>
+            </div>
+          </div>
+          <button
+            class="site-trigger info-trigger"
+            data-title="Frontend Nasıl Çalışır?"
+            data-description="Tarayıcıda bir sayfanın yüklenmesinden kullanıcı etkileşimine kadar geçen sürecin özeti."
+            data-topics="DOM oluşturma: HTML etiketleri ağaca dönüştürülür|Render aşaması: CSS ile kutu modeli ve yerleşim hesaplanır|Etkileşim: JavaScript olay dinleyicileriyle arayüz güncellenir"
+            data-code-key="frontend-calisma"
+            data-demo="demos/frontend-nasil-calisir/index.html"
+          >
+            Detayları gör
+          </button>
+        </article>
+      </section>
+
+      <section class="portfolio" id="projeler">
+        <header>
+          <p class="eyebrow">Referans işler</p>
+          <h2>Diğer web site örnekleri</h2>
+          <p class="portfolio-lead">
+            Tasarım dili, etkileşim yoğunluğu ve içerik düzeni açısından farklılaşan
+            birkaç projeyi aşağıda hızlıca inceleyebilirsin. Her biri yeni müşterilerle
+            görüşürken referans olarak gösterilmeye hazır.
+          </p>
+        </header>
+        <div class="portfolio-grid">
+          <article class="site-card">
+            <div class="site-shot gradient-one" aria-hidden="true"></div>
+            <div>
+              <h3>MKO Cafe</h3>
+              <p>
+                Gastronomi odaklı, rezervasyon ve ön sipariş akışlarını tek ekranda çözen butik kafe deneyimi.
+              </p>
+              <button
+                class="site-trigger"
+                data-title="MKO Cafe"
+                data-description="Ön sipariş destekli rezervasyon formu, cam efektli kartlar ve geniş menü akışıyla premium kafe sunumu."
+                data-src="projects/mko-cafe/index.html"
+              >
+                Detayları incele
+              </button>
+            </div>
+          </article>
+          <article class="site-card">
+            <div class="site-shot gradient-two" aria-hidden="true"></div>
+            <div>
+              <h3>ESAR Platformu</h3>
+              <p>
+                Kurumsal araştırma yazılımı için hazırlanan çok sayfalı demo: satış, destek ve canlı chat senaryoları.
+              </p>
+              <button
+                class="site-trigger"
+                data-title="ESAR Platformu"
+                data-description="Çok sayfalı SaaS tanıtımı, fiyatlandırma kartları ve canlı destek widget'ıyla birlikte geliyor."
+                data-src="projects/esar/esar.html"
+              >
+                Detayları incele
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="site-modal" aria-hidden="true">
+        <div class="site-modal__backdrop" data-close-modal></div>
+        <div class="site-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="site-modal-title" tabindex="-1">
+          <button class="site-modal__close" aria-label="Pencereyi kapat" data-close-modal>&times;</button>
+          <div class="site-modal__info">
+            <p class="eyebrow">Canlı önizleme</p>
+            <h3 id="site-modal-title">Örnek başlık</h3>
+            <p id="site-modal-description">Bu alan tıklanan karttan gelen açıklamayla güncellenir.</p>
+          </div>
+          <div class="site-modal__frame">
+            <iframe src="" title="Site örneği" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-modal" aria-hidden="true">
+        <div class="info-modal__backdrop" data-close-info></div>
+        <div class="info-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="info-modal-title" tabindex="-1">
+          <button class="info-modal__close" aria-label="Bilgi kartını kapat" data-close-info>&times;</button>
+          <p class="eyebrow">Frontend bilgi kartı</p>
+          <h3 id="info-modal-title">Kart Başlığı</h3>
+          <p id="info-modal-description">Kart açıklaması burada görünecek.</p>
+          <ul id="info-modal-list"></ul>
+          <div class="info-modal__code-wrap">
+            <h4>Ornek Kod</h4>
+            <pre><code id="info-modal-code"></code></pre>
+          </div>
+          <div class="info-modal__demo-wrap">
+            <h4>Canli Onizleme</h4>
+            <iframe id="info-modal-demo" src="" title="Kod onizleme" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <h3>Frontendci</h3>
+        <p>
+          Instagram'da doğan ve üretkenliği merkezine alan yaratıcı frontend topluluğu.
+          Bilgiyi herkes için erişilebilir, uygulanabilir ve ilham verici tutuyoruz.
+        </p>
+      </div>
+      <div>
+        <h4>İletişim</h4>
+        <a href="mailto:selam@frontendci.studio">selam@frontendci.studio</a>
+        <a href="https://www.instagram.com/frontendci" target="_blank" rel="noopener noreferrer"
+          >Instagram</a
+        >
+        <a href="https://discord.gg/" target="_blank" rel="noopener noreferrer">Discord</a>
+      </div>
+      <div>
+        <h4>Hakkımızda</h4>
+        <p>
+          Atölyeler, derinlemesine rehberler ve ürün stratejisi üzerine mini yayınlar ile
+          dijital ürün ekiplerine eşlik ediyoruz.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

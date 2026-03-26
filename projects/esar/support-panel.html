@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESAR - Canlı Destek Paneli</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1f3b8f;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: #f9fbff;
+            text-decoration: none;
+            font-size: 1em;
+            letter-spacing: 0.03em;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-brand {
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 1.4em;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto 0;
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+
+        header.panel-header {
+            background: linear-gradient(135deg, #3b8dff 0%, #6b9bff 40%, #8ed0ff 100%);
+            color: white;
+            padding: 50px 50px 40px;
+            text-align: left;
+        }
+
+        header.panel-header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        header.panel-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .panel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 40px 50px 60px;
+            background: white;
+        }
+
+        .panel-card {
+            background: #f8f9ff;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.18);
+        }
+
+        .panel-card h2 {
+            color: #34407a;
+            margin-bottom: 16px;
+            font-size: 1.5em;
+        }
+
+        .panel-card__head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .panel-stats {
+            text-align: right;
+            font-size: 0.95em;
+            color: #5b689f;
+        }
+
+        .panel-stats strong {
+            color: #2f3f85;
+        }
+
+        .panel-messages {
+            max-height: 420px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 10px 4px 0;
+        }
+
+        .panel-empty {
+            color: #7d86b6;
+            font-size: 0.95em;
+        }
+
+        .panel-message .chat-bubble {
+            width: 100%;
+        }
+
+        .panel-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .panel-form textarea {
+            width: 100%;
+            resize: vertical;
+            min-height: 140px;
+            border-radius: 14px;
+            border: 1px solid rgba(102, 126, 234, 0.4);
+            padding: 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: #1f3b8f;
+        }
+
+        .panel-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .panel-actions button {
+            flex: 1 1 180px;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .panel-actions button[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .panel-actions .panel-clear {
+            background: rgba(102, 126, 234, 0.1);
+            color: #5060a8;
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-replies button {
+            border: 1px dashed rgba(102, 126, 234, 0.5);
+            background: white;
+            color: #4450a5;
+            border-radius: 999px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .quick-replies button:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .panel-grid {
+                padding: 30px;
+            }
+
+            .panel-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+<body>
+    <nav>
+        <a href="esar.html" class="nav-brand">ESAR</a>
+        <div class="nav-links">
+            <a href="esar.html">Ana Sayfa</a>
+            <a href="sales.html">Satış Sayfası</a>
+            <a href="general-info.html#hakkimizda">Hakkımızda</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="panel-header">
+            <h1>Canlı Destek Paneli</h1>
+            <p>Müşteri mesajlarını inceleyin, hızlı yanıtlayın ve konuşma geçmişini yönetin.</p>
+        </header>
+
+        <section class="panel-grid" data-support-panel>
+            <article class="panel-card panel-stream">
+                <div class="panel-card__head">
+                    <h2>Mesaj Akışı</h2>
+                    <div class="panel-stats">
+                        <div>Toplam Mesaj: <strong data-support-count>0</strong></div>
+                        <div>Son Mesaj: <strong data-support-last>-</strong></div>
+                    </div>
+                </div>
+                <div class="panel-messages" data-support-messages>
+                    <p class="panel-empty">Henüz mesaj yok.</p>
+                </div>
+            </article>
+
+            <article class="panel-card panel-reply">
+                <h2>Yanıt Gönder</h2>
+                <form class="panel-form" data-support-form>
+                    <label for="support-reply">Yanıtınız</label>
+                    <textarea id="support-reply" data-support-input placeholder="Müşteriye göndermek istediğiniz mesajı yazın..."></textarea>
+                    <div class="panel-actions">
+                        <button type="submit">Yanıtı Gönder</button>
+                        <button type="button" class="panel-clear" data-support-clear>Konuşmayı Temizle</button>
+                    </div>
+                </form>
+                <div class="quick-replies">
+                    <button type="button" data-quick-reply="Merhaba, mesajınızı aldık ve kısa süre içinde dönüş yapacağız.">Hızlı Karşılama</button>
+                    <button type="button" data-quick-reply="Talebinizi ilgili ekip ile paylaştık. En geç 24 saat içinde bilgi vereceğiz.">Ekip Yanıtı</button>
+                    <button type="button" data-quick-reply="Geri bildiriminiz için teşekkür ederiz. Çözüm sağlandığında sizi bilgilendireceğiz.">Teşekkür</button>
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <script src="chat-widget.js"></script>
+</body>
+</html>

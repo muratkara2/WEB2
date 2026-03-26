@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Tasarim Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(140deg, #f7efe8, #fdfcff);
+        color: #231f2e;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+      .hero {
+        width: min(540px, 92%);
+        background: #fff;
+        border: 1px solid #ece7f3;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 25px 70px rgba(25, 15, 46, 0.1);
+      }
+      h1 { margin: 0 0 0.8rem; }
+      p { color: #5a556a; }
+      .cta {
+        display: inline-block;
+        margin-top: 1rem;
+        background: #ff6a3d;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.7rem 1.1rem;
+        border-radius: 999px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <h1>Doğru Hiyerarşi</h1>
+      <p>Kullanıcı önce başlığı, sonra faydayı, sonra eylemi görür.</p>
+      <a class="cta" href="#">Hemen Basla</a>
+    </section>
+  </body>
+</html>

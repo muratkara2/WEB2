@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MKO Hakkımızda</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --noir: #050505;
+      --espresso: rgba(24, 14, 8, 0.88);
+      --amber: #e0a96d;
+      --fog: rgba(255, 240, 230, 0.78);
+      --mint: rgba(173, 214, 174, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: #f8f6f1;
+      min-height: 100vh;
+      background: var(--noir);
+      background-image: linear-gradient(130deg, rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.4)),
+        url('https://images.unsplash.com/photo-1470123808288-1e59739d935a?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4vw;
+    }
+
+    main {
+      width: min(1200px, 100%);
+      background: var(--espresso);
+      border-radius: 36px;
+      padding: clamp(2rem, 4vw, 3.4rem);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.2em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 0.45rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: border-color 250ms ease, color 250ms ease;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--amber);
+      color: #fff;
+    }
+
+    header {
+      display: grid;
+      gap: 1rem;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.15;
+    }
+
+    header p {
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .pill--amber {
+      border-color: rgba(224, 169, 109, 0.6);
+      color: var(--amber);
+    }
+
+    .pill--mint {
+      border-color: rgba(173, 214, 174, 0.6);
+      color: #ccf3d0;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .story-card {
+      background: rgba(5, 5, 5, 0.35);
+      border-radius: 26px;
+      padding: 1.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 260px;
+    }
+
+    .story-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+    }
+
+    .story-card p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+    }
+
+    .story-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(224, 169, 109, 0.18), rgba(173, 214, 174, 0.18));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .about-panel article {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .about-panel h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+    }
+
+    .timeline {
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: rgba(30, 18, 11, 0.85);
+    }
+
+    .timeline li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(30, 18, 11, 0.15);
+      padding-bottom: 0.35rem;
+    }
+
+    .cta-link {
+      justify-self: start;
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(30, 18, 11, 0.4);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #1b120b;
+      background: #fff3e2;
+      transition: transform 250ms ease;
+    }
+
+    .cta-link:hover {
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        flex-direction: column;
+      }
+
+      .story-card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav>
+      <span>MKO</span>
+      <div class="nav-links">
+        <a href="index.html">Anasayfa</a>
+        <a href="index.html#rezervasyon">Rezervasyon</a>
+      </div>
+    </nav>
+
+    <header>
+      <span class="pill">Hakkımızda</span>
+      <h1>MKO'nun hikayesi fincanların ötesinde başlıyor.</h1>
+      <p>Gündüzleri sakin çalışma köşeleri, akşamları seçki etkinliklerle dolu sıcak bir mahalle salonu… MKO, kahve çekirdeğini tarladan baristaya taşıyan sürecin her anına eşlik ediyor ve misafirlerini bu yolculuğun ortağı yapıyor.</p>
+    </header>
+
+    <section class="story-grid">
+      <article class="story-card">
+        <span class="pill pill--amber">İmza Tatlar</span>
+        <h3>Barista imzalı menü</h3>
+        <p>Darjeeling notalı MKO Rafine, karamelize portakal kabuklu Bloom ve her hafta değişen single-origin serisiyle damakları şaşırtan reçeteler hazırlıyoruz.</p>
+        <ul>
+          <li>MKO Rafine — Darjeeling çayı + espresso</li>
+          <li>Bloom — Portakal kabuğu + karamel köpük</li>
+          <li>Haftalık single-origin espresso rituali</li>
+        </ul>
+      </article>
+
+      <article class="story-card">
+        <span class="pill pill--mint">Yerel üretim</span>
+        <h3>Tarladan fincana</h3>
+        <p>Bodrum'dan günlük gelen keçi sütü, Karadeniz yaylalarından tereyağlı kruvasan ve sürdürülebilir çiftliklerden çiğ kahve çekirdekleriyle şeffaf bir tedarik zinciri kurduk.</p>
+        <ul>
+          <li>Haftalık çiftçi sohbetleri</li>
+          <li>Sezonluk kavurma programı</li>
+          <li>Kompost edilen kahve posaları</li>
+        </ul>
+      </article>
+
+      <article class="story-card">
+        <span class="pill pill--amber">Akşam programı</span>
+        <h3>Analog akşamlar</h3>
+        <p>Pazar vinil dinletileri, çarşamba latte art atölyeleri ve cuma gecesi mikro tadım seanslarıyla her ziyaret yeni bir deneyim sunuyor.</p>
+        <ul>
+          <li>Vinil kürasyonu: DJ Ritim Kolektifi</li>
+          <li>Latte art sınırlı 8 kişi</li>
+          <li>Mikro tadımda üç farklı kavrum</li>
+        </ul>
+      </article>
+
+      <article class="story-card">
+        <span class="pill pill--mint">Mekan ruhu</span>
+        <h3>Mahalle salonu</h3>
+        <p>Kumaş kaplı köşe koltuklar, gün batımını içeri alan geniş camlar ve bitki köşeleriyle sıcak, davetkar bir atmosfer yaratıyoruz.</p>
+        <ul>
+          <li>Sanatçılara açık duvar programı</li>
+          <li>Okuma kulübü kitaplığı</li>
+          <li>İç mekanda 42 bitki ailesi</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="about-panel">
+      <article>
+        <h4>Kavrma & ritüeller</h4>
+        <p>Barista takımımız her pazartesi kavurma günlüğünü günceller. Çekirdek profilleri QR kodla masaya gelir; misafirler hangi fermantasyonla hazırlanmış olduğunu anında görebilir.</p>
+        <a class="cta-link" href="index.html#rezervasyon">Bir masa ayırt</a>
+      </article>
+      <article>
+        <h4>Haftalık akış</h4>
+        <ul class="timeline">
+          <li><span>Pzt-Sal</span><span> Sessiz çalışma saatleri</span></li>
+          <li><span>Çarşamba</span><span> Latte art atölyesi</span></li>
+          <li><span>Cuma</span><span> Mikro tadım & sohbet</span></li>
+          <li><span>Pazar</span><span> Analog vinil gecesi</span></li>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      MKO Cafe • Kuloğlu Mh. İstanbul • hello@mko.cafe
+    </footer>
+  </main>
+</body>
+</html>

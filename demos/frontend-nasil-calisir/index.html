@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Calisma Demo</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(145deg, #eef3ff, #fef6ef);
+      }
+      .card {
+        width: min(420px, 90%);
+        background: #fff;
+        border-radius: 18px;
+        border: 1px solid #e3e8f8;
+        padding: 1.3rem;
+        box-shadow: 0 20px 50px rgba(36, 24, 59, 0.12);
+      }
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 0.65rem 1rem;
+        background: #334dff;
+        color: #fff;
+        cursor: pointer;
+      }
+      #sayac {
+        margin-top: 0.8rem;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h2>DOM + Olay + Guncelleme</h2>
+      <p>Tiklama olayi JavaScript tarafinda yakalanir ve metin aninda guncellenir.</p>
+      <button id="sayacBtn">Artir</button>
+      <p id="sayac">0</p>
+    </section>
+    <script>
+      let deger = 0;
+      const btn = document.getElementById('sayacBtn');
+      const alan = document.getElementById('sayac');
+      btn.addEventListener('click', () => {
+        deger += 1;
+        alan.textContent = deger;
+      });
+    </script>
+  </body>
+</html>
