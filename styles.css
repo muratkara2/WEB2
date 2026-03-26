@@ -624,11 +624,25 @@ body.modal-open {
     flex-wrap: wrap;
     gap: 1rem;
     border-radius: 1.2rem;
+    padding: 1rem 1.2rem;
+    align-items: flex-start;
+  }
+
+  .logo-group {
+    width: 100%;
+    justify-content: center;
   }
 
   .nav-links {
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
   }
 
   .hero-card {
