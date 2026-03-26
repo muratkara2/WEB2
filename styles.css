@@ -634,4 +634,22 @@ body.modal-open {
   .hero-card {
     padding: 2.2rem;
   }
+
+  body.modal-open .site-header {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .site-modal,
+  .info-modal {
+    align-items: flex-start;
+    padding: 6.5rem 1rem 2rem;
+  }
+
+  .site-modal__dialog,
+  .info-modal__dialog {
+    width: 100%;
+    max-height: calc(100vh - 8.5rem);
+  }
 }
